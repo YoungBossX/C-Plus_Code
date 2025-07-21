@@ -23,7 +23,7 @@ int main () {
     cout << "请猜一个 1~10 的数字：";
 
     // 3. 判断用户猜测的数字是否正确
-    for (bool is_correct = false;!is_correct;) {
+    for (bool is_continue = true;is_continue;) {
         cin >> guess_num;
 
         if (guess_num < num) {
@@ -32,7 +32,7 @@ int main () {
             cout << "你猜的数字大了，请重新猜测：";
         } else {
             cout << "恭喜你猜对了！" << endl;
-            is_correct = true;
+            is_continue = false;
         }
     }
 
