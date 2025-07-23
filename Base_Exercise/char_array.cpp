@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(){
+int main() {
     "hello"; // 底层就是字符数组
     char s[] = "hello"; // 底层也是字符数组，会额外添加一个\0作为最后一个元素，当作结束标记
 

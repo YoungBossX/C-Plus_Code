@@ -9,7 +9,7 @@ using U_ll = unsigned long long;
 
 const int count = 10;
 
-int main(){
+int main() {
     // 有符号：signed（可选），无符号：unsigned（必写）
     signed int num1 = 10;
     int num2 = -10;
