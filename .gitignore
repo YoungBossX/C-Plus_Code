@@ -69,3 +69,4 @@ weights/
 
 # *.exe Files
 *.exe
+**/*.exe
