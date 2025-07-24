@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(){
+int main() {
     // 空指针
     // int* p1 = nullptr; // 声明了一个指针变量（p就被分配了8个字节的空间）
     // int* p2 = NULL;
