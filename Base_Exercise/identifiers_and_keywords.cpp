@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(){
+int main() {
     // 内容限定，标识符由数字、字母、下划线组成，不能以数字开头
     // int 1num = 10;
     // int num-1 = 10; 

@@ -6,7 +6,7 @@ using namespace std;
 
 const int count = 10;
 
-int main(){
+int main() {
     // short、long、int、long long
     short age = 18;
     cout << "年龄是：" << age << endl;
