@@ -8,7 +8,7 @@ using namespace std;
  * 数组名[下标索引]，访问数组元素
  */
 
-int main(){
+int main() {
     // 定义一个整型数组，长度为5
     int arr1[5];
     arr1[0] = 1;
