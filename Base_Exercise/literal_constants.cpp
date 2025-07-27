@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(){
+int main() {
     //整型、实型、字符、字符串
 
     //整型（整数）
