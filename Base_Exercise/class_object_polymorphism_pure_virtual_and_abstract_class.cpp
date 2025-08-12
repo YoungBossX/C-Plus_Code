@@ -2,10 +2,6 @@
 
 using namespace std;
 
-#include "iostream"
-
-using namespace std;
-
 /*
  * 多态是C++面向对象三大特性之一
  *
