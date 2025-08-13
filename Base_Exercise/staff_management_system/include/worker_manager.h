@@ -5,9 +5,10 @@ using namespace std;
 
 class WorkerManager {
 public:
-
 	//构造函数
 	WorkerManager();
+
+	void showMenu();
 
 	//析构函数
 	~WorkerManager();
