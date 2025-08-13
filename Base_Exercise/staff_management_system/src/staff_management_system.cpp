@@ -19,15 +19,58 @@
  *  - 清空所有文档：清空文件中记录的所有职工信息 （清空前需要再次确认，防止误删）
  */
 
-#include<iostream>
+#include <iostream>
 #include "worker_manager.h"
 
 using namespace std;
 
 int main() {
     WorkerManager wm; 
-    
-    wm.showMenu();
+    int choice=0;
+
+    while (true) {
+		wm.showMenu();
+		cout << "请输入您的选择：";
+
+        if (!(cin >> choice)) {
+            cout << "输入有误，请重新输入！" << endl;
+            cin.clear();
+            cin.ignore(1024, '\n');
+            cout << "按任意键继续...";
+            cin.get();
+            wm.safeClearScreen();
+            continue;
+        }
+
+		switch (choice)
+		{
+		case 0: //退出系统
+			wm.exitSystem();	
+			break;
+		case 1: //添加职工
+			break;
+		case 2: //显示职工
+			break;
+		case 3: //删除职工
+			break;
+		case 4: //修改职工
+			break;
+		case 5: //查找职工
+			break;
+		case 6: //排序职工
+			break;
+		case 7: //清空文件
+			break;
+		default:
+			cout << "输入有误，请重新输入！" << endl;
+			cin.clear();
+			cin.ignore(1024, '\n');
+			cout << "按任意键继续...";
+			cin.get();	
+			wm.safeClearScreen();
+			break;
+		}
+    }
 
     return 0;
 }

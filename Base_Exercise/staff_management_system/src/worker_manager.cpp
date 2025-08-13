@@ -29,6 +29,16 @@ void WorkerManager::showMenu() {
 	cout << endl;
 }
 
+void WorkerManager::exitSystem() {
+	cout << "欢迎下次使用！" << endl;
+	exit(0);
+}
+
+void WorkerManager::safeClearScreen() {
+    cout << "\033[2J\033[1;1H";
+    cout.flush();
+}
+
 WorkerManager::~WorkerManager() {
 
 }

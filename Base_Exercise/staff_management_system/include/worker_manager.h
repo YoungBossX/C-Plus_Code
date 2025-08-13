@@ -1,7 +1,8 @@
 #pragma once
-#include<iostream>
-using namespace std;
 
+#include<iostream>
+
+using namespace std;
 
 class WorkerManager {
 public:
@@ -9,6 +10,8 @@ public:
 	WorkerManager();
 
 	void showMenu();
+	void exitSystem();
+	void safeClearScreen();
 
 	//析构函数
 	~WorkerManager();
