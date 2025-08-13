@@ -19,3 +19,9 @@
  *  - 清空所有文档：清空文件中记录的所有职工信息 （清空前需要再次确认，防止误删）
  */
 
+#include "worker_manager.h"
+
+int main() {
+
+    return 0;
+}
