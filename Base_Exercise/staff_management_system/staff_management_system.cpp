@@ -22,9 +22,27 @@
 #include <iostream>
 #include "worker_manager.h"
 
+#include "worker.h"
+#include "employee.h"
+#include "manager.h"
+#include "boss.h"
+
 using namespace std;
 
 int main() {
+	// 测试
+	// Worker* wm1 = new Employee(1, "WYZ", 1); 
+	// wm1->showInfo();
+	// delete wm1;
+
+	// Worker* wm2 = new Manager(2, "PYY", 2);
+	// wm2->showInfo();
+	// delete wm2;
+
+	// Worker* wm3 = new Boss(3, "XCC", 3);
+	// wm3->showInfo();
+	// delete wm3;
+
     WorkerManager wm; 
     int choice=0;
 
@@ -48,6 +66,7 @@ int main() {
 			wm.exitSystem();	
 			break;
 		case 1: //添加职工
+			wm.Add_Emp();
 			break;
 		case 2: //显示职工
 			break;
