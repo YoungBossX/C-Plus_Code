@@ -66,9 +66,10 @@ int main() {
 			wm.exitSystem();	
 			break;
 		case 1: //添加职工
-			wm.Add_Emp();
+			wm.addStaff();
 			break;
 		case 2: //显示职工
+			wm.showStaff();
 			break;
 		case 3: //删除职工
 			break;
@@ -90,6 +91,5 @@ int main() {
 			break;
 		}
     }
-
     return 0;
 }

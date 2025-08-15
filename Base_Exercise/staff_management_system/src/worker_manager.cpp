@@ -10,8 +10,73 @@
 #include "worker_manager.h"
 
 WorkerManager::WorkerManager() {
-    this -> m_emp_num = 0;
-	this -> m_emp_array = nullptr;
+    /* 测试 */
+    // int num = this -> getStaffNum();
+    // cout << "当前职工人数：" << num << endl;
+    // this -> m_staff_num = num;
+
+    // this -> m_staff_array = new Worker *[this->m_staff_num];
+    // initStaff();
+	// for (int i = 0; i < m_staff_num; i++)
+	// {
+	// 	cout << "职工号：" << this -> m_staff_array[i] -> m_id
+	// 		 << " 职工姓名：" << this -> m_staff_array[i] -> m_name
+	// 		 << " 部门编号：" << this -> m_staff_array[i] -> m_department_id << endl;
+	// }
+    // 文件名不存在
+    // ifstream ifs;
+
+    // ifs.open(FILENAME, ios::in);
+
+    // if (!ifs.is_open()) {
+    //     cout << "文件不存在！" << endl;
+    //     this -> m_staff_num = 0;
+    //     this -> m_staff_array = nullptr;
+    //     this -> m_file_is_empty = true;
+    //     ifs.close();
+    //     return;
+    // }
+
+    // // 文件存在，但没有记录
+    // char ch;
+    // ifs >> ch;
+    // if (ifs.eof()) {
+    //     cout << "文件为空!" << endl;
+    //     this -> m_staff_num = 0;
+    //     this -> m_staff_array = nullptr;
+    //     this -> m_file_is_empty = true;
+    //     ifs.close();
+    //     return;
+    // }
+
+    /* 构造函数内容 */
+    int num = this -> getStaffNum();
+    this -> m_staff_num = num;
+    this -> m_staff_array = new Worker *[this->m_staff_num];
+    initStaff();
+    // 文件名不存在
+    ifstream ifs;
+
+    ifs.open(FILENAME, ios::in);
+
+    if (!ifs.is_open()) {
+        this -> m_staff_num = 0;
+        this -> m_staff_array = nullptr;
+        this -> m_file_is_empty = true;
+        ifs.close();
+        return;
+    }
+
+    // 文件存在，但没有记录
+    char ch;
+    ifs >> ch;
+    if (ifs.eof()) {
+        this -> m_staff_num = 0;
+        this -> m_staff_array = nullptr;
+        this -> m_file_is_empty = true;
+        ifs.close();
+        return;
+    }
 }
 
 // 展示菜单
@@ -40,7 +105,7 @@ void WorkerManager::safeClearScreen() {
     cout.flush();
 }
 
-void WorkerManager::Add_Emp() {
+void WorkerManager::addStaff() {
 	cout << "请输入添加职工的数量：";
 	int add_num = 0;
 
@@ -54,12 +119,12 @@ void WorkerManager::Add_Emp() {
         }
     }
 
-	int new_size = this->m_emp_num + add_num;
+	int new_size = this -> m_staff_num + add_num;
 	Worker** new_space = new Worker* [new_size];
 
-    if (this -> m_emp_array != nullptr) {
-        for (int i = 0; i < this -> m_emp_num; i++) {
-            new_space[i] = this -> m_emp_array[i];
+    if (this -> m_staff_array != nullptr) {
+        for (int i = 0; i < this -> m_staff_num; i++) {
+            new_space[i] = this -> m_staff_array[i];
         }
     }
 
@@ -106,20 +171,118 @@ void WorkerManager::Add_Emp() {
                 worker = new Boss(id, name, department_id);
                 break;
         }
-        new_space[this -> m_emp_num + i] = worker;
+        new_space[this -> m_staff_num + i] = worker;
     }
 
-	delete[] this -> m_emp_array;
+    if (this -> m_staff_array != nullptr) {
+        delete[] this -> m_staff_array;
+    }
 
-    this -> m_emp_array = new_space;
+    this -> m_staff_array = new_space;
 
-    this -> m_emp_num = new_size;
+    this -> m_staff_num = new_size;
 
 	cout << "成功添加" << add_num << "名新职工！" << endl;
+
+    this->m_file_is_empty = false;
+
+    this -> save();
+}
+
+int WorkerManager::getStaffNum() {
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);
+
+    int id;
+    string name;
+    int d_id;
+    int num = 0;
+
+    while (ifs >> id && ifs >> name && ifs >> d_id) {
+        num++;
+    }
+
+    ifs.close();
+
+    return num;
+}
+
+void WorkerManager::initStaff() {
+    ifstream ifs;
+	ifs.open(FILENAME, ios::in);
+
+    int id;
+	string name;
+	int d_id;
+
+    int index = 0;
+
+    while (ifs >> id && ifs >> name && ifs >> d_id) {
+        Worker* worker = nullptr;
+
+        if (d_id == 1) {
+            worker = new Employee(id, name, d_id);
+        } else if (d_id == 2) {
+            worker = new Manager(id, name, d_id);
+        } else if (d_id == 3) {
+            worker = new Boss(id, name, d_id);
+        }
+
+        this -> m_staff_array[index] = worker;
+        index++;
+    }
+
+    ifs.close();
+}
+
+void WorkerManager::showStaff() {
+    if (this -> m_file_is_empty)
+	{
+		cout << "文件不存在或记录为空！" << endl;
+	}
+	else
+	{
+		for (int i = 0; i < m_staff_num; i++)
+		{
+			this -> m_staff_array[i] -> showInfo();
+		}
+	}
+
+    cout << "按任意键继续...";
+    cin.ignore();
+    cin.get();	
+}
+
+void WorkerManager::save() {
+    /*  
+     * 功能描述：对文件进行读写
+     *  - 文件管理类中需要一个与文件进行交互的功能，对于文件进行读写操作
+     */
+    ofstream ofs;
+    ofs.open(FILENAME, ios::out);
+
+    if(!ofs.is_open()) {
+        this -> safeClearScreen();
+        cout << "文件打开失败！" << endl;
+        cout << "按任意键继续...";
+        cin.get();
+        this -> safeClearScreen();
+        return;
+    }
+
+    for (int i = 0; i < this -> m_staff_num; i++) {
+        Worker* worker = this -> m_staff_array[i];
+        ofs << worker -> m_id << " "
+            << worker -> m_name << " "
+            << worker -> m_department_id << endl;
+    }
+
+    ofs.close();
 }
 
 WorkerManager::~WorkerManager() {
-	if (this -> m_emp_array != nullptr) {
-		delete[] this -> m_emp_array;
+	if (this -> m_staff_array != nullptr) {
+		delete[] this -> m_staff_array;
+        this -> m_staff_array = nullptr;
 	}
 }
