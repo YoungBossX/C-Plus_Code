@@ -253,6 +253,14 @@ void WorkerManager::showStaff() {
     cin.get();	
 }
 
+void delStaff() {
+    
+}
+
+int WorkerManager::isExist(int id) {
+
+}
+
 void WorkerManager::save() {
     /*  
      * 功能描述：对文件进行读写

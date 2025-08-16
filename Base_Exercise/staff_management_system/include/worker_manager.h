@@ -34,11 +34,14 @@ public:
 	// 初始化员工
 	void initStaff();
 	// 显示职工
-	void showStaff();
+	void show();
+	// 删除职工
+	void delStaff();
+	// 按照职工编号判断职工是否存在,若存在返回职工在数组中位置，不存在返回-1
+	int isExist(int id);
 	// 保存文件
 	void save();
 
 	// 析构函数
 	~WorkerManager();
-
 };
