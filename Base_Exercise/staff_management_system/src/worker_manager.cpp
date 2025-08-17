@@ -239,26 +239,6 @@ void WorkerManager::initStaff() {
 }
 
 void WorkerManager::showStaff() {
-    ifstream ifs;
-
-    ifs.open(FILENAME, ios::in);
-
-    if (!ifs.is_open()) {
-        this -> m_staff_num = 0;
-        this -> m_staff_array = nullptr;
-        this -> m_file_is_empty = true;
-        ifs.close();
-    }
-
-    char ch;
-    ifs >> ch;
-    if (ifs.eof()) {
-        this -> m_staff_num = 0;
-        this -> m_staff_array = nullptr;
-        this -> m_file_is_empty = true;
-        ifs.close();
-    }
-
     if (this -> m_file_is_empty)
 	{
 		cout << "文件不存在或记录为空！" << endl;
@@ -293,8 +273,16 @@ void WorkerManager::delStaff() {
                 this -> m_staff_array[i] = this -> m_staff_array[i + 1];
             }
             this -> m_staff_num--;
-            this -> saveFile();
+
             cout << "删除成功！" << endl;
+            this -> saveFile();
+
+            if (this -> m_staff_num == 0) {
+                delete[] this -> m_staff_array;
+                this -> m_staff_array = nullptr;
+                this -> m_file_is_empty = true;
+                cout << "职工信息已经被清理完！" << endl;
+            }
         } else {
             cout << "删除失败，未找到该职工" << endl;
         }
