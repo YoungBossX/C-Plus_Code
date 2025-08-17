@@ -556,6 +556,7 @@ WorkerManager::~WorkerManager() {
 	if (this -> m_staff_array != nullptr) {
         for (int i = 0; i < m_staff_num; i++) {
             delete this -> m_staff_array[i];
+           this -> m_staff_array[i] = nullptr;
         }
 	}
     delete[] this -> m_staff_array;
