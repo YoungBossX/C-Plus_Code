@@ -72,14 +72,19 @@ int main() {
 			wm.showStaff();
 			break;
 		case 3: //删除职工
+			wm.delStaff();
 			break;
 		case 4: //修改职工
+			wm.modStaff();
 			break;
 		case 5: //查找职工
+			wm.findStaff();
 			break;
 		case 6: //排序职工
+			wm.sortStaff();
 			break;
 		case 7: //清空文件
+			wm.cleanFile();
 			break;
 		default:
 			cout << "输入有误，请重新输入！" << endl;

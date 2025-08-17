@@ -7,10 +7,10 @@ Manager::Manager(int id, string name, int d_id) {
 }
 
 void Manager::showInfo() {
-    cout << "职工编号: " << this->m_id;
-    cout << "\t职工姓名: " << this->m_name;
-    cout << "\t职工部门: " << this->getDeptName();
-    cout << "\t岗位职责：完成老板交给的任务，并下发任务给员工"  << endl;
+    cout << "职工编号: " << this -> m_id;
+    cout << "\t职工姓名: " << this -> m_name;
+    cout << "\t岗位: " << this -> getDeptName();
+    cout << "\t岗位职责：完成总裁交给的任务，并下发任务给员工"  << endl;
 }
 
 string Manager::getDeptName() {
