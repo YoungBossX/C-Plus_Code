@@ -46,8 +46,8 @@ int main() {
     cout << "p3的年龄是：" << p3.age << endl;
     // 显示法
     Person p4;
-    Person p5 = Person(10); // 有参构造函数的调用，相当于 Person p5(20);
-    Person p6 = Person(p4); // 拷贝构造函数的调用，相当于 Person p6(p5);
+    Person p5 = Person(10); // 有参构造函数的调用，相当于 Person p5(10);
+    Person p6 = Person(p4); // 拷贝构造函数的调用，相当于 Person p6(p4);
     // Person(10); 匿名对象，放在=右边相当于给它取名字，当前行执行结束后，系统会立即回收掉匿名对象
     // cout << "xcc" << endl;
     // 注意事项：
