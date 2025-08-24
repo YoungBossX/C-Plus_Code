@@ -6,7 +6,7 @@ typedef struct Node {
 } Node;
 typedef struct Node* LinkList;
 
-void CreateListTail(LinkList* L, int n) {
+Status CreateListTail(LinkList* L, int n) {
     LinkList p, r;
     int i;
 

@@ -7,7 +7,7 @@ typedef struct Node {
 typedef struct Node* LinkList;
 
 
-void CreateListHead(LinkList* L, int n) {
+Status CreateListHead(LinkList* L, int n) {
     LinkList p;
     int i;
 
